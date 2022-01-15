@@ -1,0 +1,263 @@
+\documentclass{article}
+\usepackage[usenames, dvipsnames]{color}
+\usepackage{fancyhdr}
+\usepackage{extramarks}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{mathtools}
+\usepackage{amsthm}
+\usepackage{amsfonts}
+\usepackage[per-mode=fraction]{siunitx}
+\usepackage{tikz}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{afterpage}
+\usepackage{systeme}
+\usepackage{makecell}
+\usepackage{nicematrix}
+\usepackage{physics}
+\usepackage{float}
+\usepackage{tikz}
+\usetikzlibrary{math,arrows,positioning,shapes,fit,calc}
+\usepackage{dsfont}
+\usepackage{wrapfig}
+\usepackage{pgfplots}
+\usepackage{esint}
+\pgfplotsset{compat=1.8}
+
+\definecolor{mediumgreen}{RGB}{0,153,0}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\usetikzlibrary{trees}
+
+%
+% Basic Document Settings
+%
+
+\topmargin=-0.45in
+\evensidemargin=0in
+\oddsidemargin=0in
+\textwidth=6.5in
+\textheight=9.0in
+\headsep=0.25in
+
+\linespread{1.1}
+
+\pagestyle{fancy}
+\lhead{}
+\chead{\hmwkClass\ (\hmwkClassInstructor\/): \hmwkTitle}
+\rhead{\firstxmark}
+\lfoot{\lastxmark}
+\cfoot{\thepage}
+
+\renewcommand\headrulewidth{0.4pt}
+\renewcommand\footrulewidth{0.4pt}
+
+\setlength\parindent{0pt}
+
+%
+% Create Problem Sections
+%
+
+\newcommand{\enterProblemHeader}[1]{
+    \nobreak\extramarks{}{Problem \arabic{#1} continued on next page\ldots}\nobreak{}
+    \nobreak\extramarks{Problem \arabic{#1} (continued)}{Problem \arabic{#1} continued on next page\ldots}\nobreak{}
+}
+
+\newcommand{\exitProblemHeader}[1]{
+    \nobreak\extramarks{Problem \arabic{#1} (continued)}{Problem \arabic{#1} continued on next page\ldots}\nobreak{}
+    \stepcounter{#1}
+    \nobreak\extramarks{Problem \arabic{#1}}{}\nobreak{}
+}
+
+\setcounter{secnumdepth}{0}
+\newcounter{partCounter}
+\newcounter{homeworkProblemCounter}
+\setcounter{homeworkProblemCounter}{1}
+\nobreak\extramarks{Problem \arabic{homeworkProblemCounter}}{}\nobreak{}
+
+%
+% Homework Problem Environment
+%
+% This environment takes an optional argument. When given, it will adjust the
+% problem counter. This is useful for when the problems given for your
+% assignment aren't sequential. See the last 3 problems of this template for an
+% example.
+%
+\newenvironment{homeworkProblem}[1][-1]{
+    \ifnum#1>0
+        \setcounter{homeworkProblemCounter}{#1}
+    \fi
+    \section{Problem \arabic{homeworkProblemCounter}}
+    \setcounter{partCounter}{1}
+    \enterProblemHeader{homeworkProblemCounter}
+}{
+    \exitProblemHeader{homeworkProblemCounter}
+}
+
+%
+% Homework Details
+%   - Title
+%   - Due date
+%   - Class
+%   - Section/Time
+%   - Instructor
+%   - Author
+%
+
+\newcommand{\hmwkTitle}{Homework 1}
+\newcommand{\hmwkDueDate}{Sunday January 9, 2022}
+\newcommand{\hmwkClass}{Math 382}
+\newcommand{\hmwkClassTime}{Section A}
+\newcommand{\hmwkClassInstructor}{Prof. Ezra Getzler}
+\newcommand{\hmwkAuthorName}{\textbf{Anthony Tam}}
+
+%
+% Title Page
+%
+
+\title{
+    \vspace{2in}
+    \textmd{\textbf{\hmwkClass:\ \hmwkTitle}}\\
+    \normalsize\vspace{0.1in}\small{Due\ on\ \hmwkDueDate\ at 5:00 PM}\\
+    \vspace{0.1in}\large{\textit{\hmwkClassInstructor\ }}
+    \vspace{3in}
+}
+
+\author{\hmwkAuthorName}
+\date{}
+
+\renewcommand{\part}[1]{\textbf{\large Part \Alph{partCounter}}\stepcounter{partCounter}\\}
+
+%
+% Various Helper Commands
+%
+
+% For derivatives
+\newcommand{\deriv}[1]{\frac{\mathrm{d}}{\mathrm{d}x} (#1)}
+
+% For partial derivatives
+\newcommand{\pderiv}[2]{\frac{\partial}{\partial #1} (#2)}
+
+% Integral dx
+\newcommand{\dx}{\mathrm{d}x}
+
+% Alias for the Solution section header
+\newcommand{\solution}{\textbf{\large Solution}}
+
+% Probability commands: Expectation, Variance, Covariance, Bias
+\newcommand{\E}{\mathrm{E}}
+\newcommand{\Var}{\mathrm{Var}}
+\newcommand{\Cov}{\mathrm{Cov}}
+\newcommand{\Bias}{\mathrm{Bias}}
+
+\newcommand*\circled[1]{\tikz[baseline=(char.base)]{
+            \node[shape=circle,draw,inner sep=2pt] (char) {#1};}}
+
+\newcommand\myeqq{\stackrel{\mathclap{\normalfont\mbox{\scriptsize\text{set}}}}{=}}
+
+\makeatother
+
+\begin{document}
+
+\maketitle
+
+\pagebreak
+
+\begin{homeworkProblem}
+  Show that the triangle with vertices $0, z$ and $w$ is equilateral if and only if $|z|^{2}=|w|^{2}=2 \operatorname{Re}(\bar{z} w)$.\\
+
+  \solution
+
+  \begin{proof}
+    The three sides of the triangle formed by $0, z, \text{ and } w$ considered as points in $\mathbb{C}$ are the line segments connecting $0$ and $z$, $0$ and $w$, and $z$ and $w$. It follows then that the lengths of these sides are then $\abs{z - 0} = \abs{z}$, $\abs{w - 0} = \abs{w}$, and $\abs{z - w}$ respectively. Note that we could have just as easily chosen $\abs{0 - z}$, $\abs{0 - w}$, and $\abs{w - z}$ as representatives of the length. So, the equivalent statement to prove is
+  \begin{align*}
+   \abs{z} = \abs{w} = \abs{ z - w} \text{ if and only if } \abs{z}^2 = \abs{w}^2 = 2 \text{Re}(\overline{z}w)
+   .\end{align*}
+  Suppose then that $\abs{z} = \abs{w} = \abs{ z - w}$. This is true if and only if by squaring everything,
+  \begin{align*}
+    \abs{z}^2 = \abs{w}^2 &= \abs{ z - w}^2\\
+    &= (z- w)\overline{(z-w)}\\
+    &= (z-w)(\overline{z} - \overline{w})\\
+    &= z\overline{z}- w\overline{z} - \overline{w}z + w\overline{w}\\
+    &= \abs{z}^2 + \abs{w}^2 - w\overline{z} - \overline{w}z\\
+    &= \abs{z}^2 + \abs{w}^2 - 2 \text{Re}(\overline{z}w)
+   ,\end{align*}
+  where in the last line we used the fact that $\text{Re}(z) = \frac{1}{2}(z + \overline{z})$ and that $\overline{\overline{z}w} = \overline{\overline{z}} \, \overline{w} = z\overline{w}$. So overall, we have
+  \begin{align*}
+     \abs{z} = \abs{w} = \abs{ z - w} &\iff \abs{z}^2 = \abs{w}^2 = \abs{z}^2 + \abs{w}^2 - 2 \text{Re}(\overline{z}w) \\
+     &\iff \abs{z}^2 = \abs{w}^2 = 2 \text{Re}(\overline{z}w)
+   ,\end{align*}
+  as claimed.
+  \end{proof}
+\end{homeworkProblem}
+
+\pagebreak
+
+\begin{homeworkProblem}
+  Let $n$ be an integer. Show that the function $\cos n z$ is a polynomial in the function $\cos z$. For example, $\cos 2 z=2(\cos z)^{2}-1$.\\
+
+  \solution
+
+  \begin{proof}
+    Recall that the complex exponential $e^{inz}$ for $n \in \mathbb{Z}$ can be rewritten as
+    \begin{align*}
+     e^{inz} = \cos{nz} + i\sin{nz}
+     ,\end{align*}
+    so in particular $\text{Re}(e^{inz}) = \cos{nz}$. To rewrite cosine then, we expand the following complex binomial using the binomial formula:
+    \begin{align*}
+     \cos{nz} &= \text{Re}(e^{inz})\\
+     &= \text{Re}((e^{iz})^n)\\
+     &= \text{Re}((\cos{z} + i \sin{z})^n)\\
+     &= \text{Re} \left[ \sum_{k= 0}^{n} \left(\begin{matrix} n \\ k \end{matrix}\right) \cos^{n-k}z(i^k\sin^kz) \right]
+     .\end{align*}
+    Note now that $i^k$ is real if and only if $k$ is even, so make a substitution $k \mapsto 2m$. Summing over even indicies is equivalent to taking a sum from $m = 0$ to $m = \lfloor n/2 \rfloor$, where $\lfloor \cdot \rfloor$ denotes the floor function which returns the greatest integer less than or equal to the argument. To see why this is, note that if $n$ is even, then $\lfloor n/2 \rfloor = n/2$ so the last term is $2\cdot n/2$, but if $n$ is odd, then $\lfloor n/2 \rfloor = (n-1)/2$ so the last term is $2\cdot (n-1)/2 = n-1$. Further, $i^{2m}$ will oscillate between $i^2 = -1$ and $i^4 = 1$, so all together we have
+    \begin{align*}
+     \cos{nz} &= \sum_{m=0}^{\lfloor n/2 \rfloor}\left(\begin{matrix} n \\ 2m \end{matrix}\right) \cos^{n-2m}z\sin^{2m}z (-1)^m\\
+     &= \sum_{m=0}^{\lfloor n/2 \rfloor}\left(\begin{matrix} n \\ 2m \end{matrix}\right) \cos^{n-2m}z(\sin^{2}z)^m (-1)^m\\
+     &= \sum_{m=0}^{\lfloor n/2 \rfloor}\left(\begin{matrix} n \\ 2m \end{matrix}\right) \cos^{n-2m}z(1- \cos^2 z)^m (-1)^m\\
+     &= \sum_{m=0}^{\lfloor n/2 \rfloor}\left(\begin{matrix} n \\ 2m \end{matrix}\right) \cos^{n-2m}z(\cos^2 z - 1)^m
+     ,\end{align*}
+    where we used the identity $\sin^2z + \cos^2 z = 1$ in the second to last equality. Note that the highest power of cosine in the binomial in parentheses will be $2m$, which times the cosine factor outside of the parentheses will give us a polynomial in $\cos z$, in fact of degree $n - 2m + 2m = n$.
+  \end{proof}
+\end{homeworkProblem}
+
+\pagebreak
+
+\begin{homeworkProblem}
+\textbf{Gamelin Exercise I.8.5.} Let $S$ denote the two slits along the imaginary axis in the complex plane, one running from $i$ to $+i \infty$, the other from $-i$ to $-i \infty$. Show that $(1+i z) /(1-i z)$ lies on the negative real axis $(-\infty, 0]$ if and only if $z \in S$. Show that the principal branch
+$$
+\operatorname{Tan}^{-1} z=\frac{1}{2 i} \text{Log} \left(\frac{1+i z}{1-i z}\right)
+$$
+maps the slit plane $\mathbb{C} \backslash S$ one-to-one onto the vertical strip $\{|\text{Re}\;w|<$ $\pi / 2\}$.\\
+
+\solution
+
+\begin{proof}
+  Let $ \frac{1 + iz}{1-iz} = v$, where $v \in \mathbb{C}$. We want to show that $v \in (-\infty, 0]$ if and only if $z \in S$. An easy way to show this is to construct a one-to-one mapping from the sections of interest in the $z$-plane to the desired sections of the $v$-plane. First solving for $z$ in $v$ by clearing the denominator gives
+  \begin{align*}
+   1 + iz &= v - ivz \\
+    iz + ivz &= v-1 \\
+    iz(v+1) &= v-1 \\
+    \iff z = \frac{1}{i} \frac{v-1}{v+1} &= i \frac{1 - v}{1+v}
+   ,\end{align*}
+  which implies that this is a one-to-one mapping. Now we compute the real limits of the right hand side of the last equality to draw some conclusions about $z$. Take careful note that we are only taking real values of $v$ and carefully choosing straight line paths along the real-axis, so we evaluate the limits in the usual real-valued function way:
+  \begin{align*}
+   \lim_{v \to -\infty} \frac{1-v}{1+v} = -1 \;, \; \lim_{v \to -1^{-}} \frac{1-v}{1+v} \text{ tends to}\, -\infty,\\
+   \lim_{v \to -1^{+}} \frac{1-v}{1+v} = \text{ tends to}\, +\infty, \;\text{ and }\; \lim_{v \to 0} \frac{1-v}{1+v} = 1
+   .\end{align*}
+  Hence, $\frac{1-v}{1+v}i$ goes from $-i$ to $-i\infty$ along the $\mathbf{Im}$-axis as $v$ goes from $-\infty$ to $-1^{-}$. Further, $\frac{1-v}{1+v}i$ goes from $i$ to $i \infty$ along the \textbf{Im}-axis as $v$ goes from $-1^{+}$ to $0$. Since this map is one-to-one, there is a correspondence between the subsets
+  \begin{align*}
+   \underbrace{[-i, -i\infty)}_{\subset \, z-\text{plane}} \longleftrightarrow \underbrace{(-\infty, -1^{-}]}_{\subset \, v-\text{plane}} \; \text{ and } \underbrace{[i, i\infty)}_{\subset \, z-\text{plane}} \longleftrightarrow \underbrace{[-1^{+}, 0]}_{\subset \, v-\text{plane}}
+   .\end{align*}
+  Note that this is slight abuse of notation with $-1^{+}$ and $-1^{-}$ in the set notation, but the important remark here is that the union of the subsets of the $v$-plane give $(-\infty, 0]$ and the union of the subsets of the $z$-plane give $S$ so that $z \in S$ if and only if $v \in (-\infty, 0]$ by this one-to-one mapping as claimed.\\
+
+  To show the next claim, it is best to build up the function in question as the composition of one-to-one mappings, where we use the fact that the composition of two one-to-one maps is another one-to-one map. We have already determined that $v = \frac{1 + iz}{1-iz}$ is one-to-one from $\mathbb{C}\setminus S \rightarrowtail \mathbb{C}\setminus (-\infty, 0]$. So, let $u = \text{Log}\;v$ and note that now this is a one-to-one (and onto) map from $\mathbb{C}\setminus (-\infty, 0] \rightarrowtail \left\{ \abs{\text{Im}\,u} < \pi \right\}$ since Log is defined to be a single valued inverse for $e^{v}$. Let $w = \frac{1}{2i} u$ and then remark that this composition now maps $\left\{ \abs{\text{Im}\,u} < \pi \right\} \rightarrowtail \left\{ \abs{\text{Re}\,w} < \frac{\pi}{2} \right\}$ in a one-to-one manner. To summarize,
+  \begin{align*}
+    \mathbb{C}\setminus S \stackrel{\mathclap{v}}{\rightarrowtail} \mathbb{C}\setminus (-\infty, 0] \stackrel{\mathclap{u}}{\rightarrowtail} \left\{ \abs{\text{Im}\,u} < \pi \right\} \stackrel{\mathclap{w}}{\rightarrowtail} \left\{ \abs{\text{Re}\,w} < \pi/2 \right\}
+   ,\end{align*}
+  with $\text{Tan}^{-1}z = w \circ u \circ v : \mathbb{C}\setminus S \rightarrowtail \left\{ \abs{\text{Re}\,w} < \frac{\pi}{2} \right\}$ a one-to-one map.
+\end{proof}
+\end{homeworkProblem}
+
+\end{document}
