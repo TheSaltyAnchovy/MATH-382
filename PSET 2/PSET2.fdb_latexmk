@@ -1,6 +1,6 @@
 # Fdb version 3
-["pdflatex"] 1642277628 "PSET2.tex" "PSET2.pdf" "PSET2" 1642277630
-  "/dev/null" 1642277581 0 d41d8cd98f00b204e9800998ecf8427e ""
+["pdflatex"] 1642277879 "PSET2.tex" "PSET2.pdf" "PSET2" 1642277881
+  "/dev/null" 1642277802 0 d41d8cd98f00b204e9800998ecf8427e ""
   "/usr/local/texlive/2019/texmf-dist/fonts/map/fontname/texfonts.map" 1511824771 3332 103109f5612ad95229751940c61aada0 ""
   "/usr/local/texlive/2019/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1246382020 1004 54797486969f23fa377b128694d548df ""
   "/usr/local/texlive/2019/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex8.tfm" 1246382020 988 bdf658c3bfc2d96d3c8b02cfc1c94c20 ""
@@ -248,9 +248,9 @@
   "/usr/local/texlive/2019/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1570641356 4655948 796ca260b6d9d01af31e5305211a1cbe ""
   "/usr/local/texlive/2019/texmf-var/web2c/pdftex/pdflatex.fmt" 1570641430 4293232 239585bb4677f8f4c4c9560d042c4bc7 ""
   "/usr/local/texlive/2019/texmf.cnf" 1557341546 577 d150fef99ac436ad1156e86b0892f6ef ""
-  "PSET2.aux" 1642277629 248 f5003b773a6de6f1577be7dc5370911a "pdflatex"
-  "PSET2.tex" 1642277628 13733 f288fd5edc0542c467fe9e5b3132db5a ""
+  "PSET2.aux" 1642277881 248 f5003b773a6de6f1577be7dc5370911a "pdflatex"
+  "PSET2.tex" 1642277879 13753 c71d20e097aa057f3be73a1f36af4428 ""
   (generated)
-  "PSET2.pdf"
-  "PSET2.aux"
   "PSET2.log"
+  "PSET2.aux"
+  "PSET2.pdf"
