@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.10.9)  15 JAN 2022 14:18
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.10.9)  16 JAN 2022 11:52
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -937,66 +937,71 @@ File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 177.
+<figure.pdf, id=13, 614.295pt x 794.97pt>
+File: figure.pdf Graphic file (type pdf)
+<use figure.pdf>
+Package pdftex.def Info: figure.pdf  used on input line 193.
+(pdftex.def)             Requested size: 500.48277pt x 183.23532pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 188--190
-
+Overfull \hbox (30.72778pt too wide) in paragraph at lines 193--194
+ [][] 
  []
 
-[2]
-Underfull \hbox (badness 10000) in paragraph at lines 199--200
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 201--202
-
- []
-
-[3]
-Underfull \hbox (badness 10000) in paragraph at lines 246--247
+[2 <./figure.pdf>] [3]
+Underfull \hbox (badness 10000) in paragraph at lines 205--206
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 248--249
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 250--251
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 276--277
+Underfull \hbox (badness 10000) in paragraph at lines 207--208
 
  []
 
 [4]
-Underfull \hbox (badness 10000) in paragraph at lines 293--295
+Underfull \hbox (badness 10000) in paragraph at lines 252--253
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 296--297
+Underfull \hbox (badness 10000) in paragraph at lines 254--255
 
  []
 
-[5] (./PSET2.aux) ) 
+
+Underfull \hbox (badness 10000) in paragraph at lines 256--257
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 282--283
+
+ []
+
+[5]
+Underfull \hbox (badness 10000) in paragraph at lines 299--301
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 302--303
+
+ []
+
+[6] (./PSET2.aux) ) 
 Here is how much of TeX's memory you used:
- 40727 strings out of 492166
- 976470 string characters out of 6125377
+ 40734 strings out of 492166
+ 976596 string characters out of 6125377
  1167095 words of memory out of 5000000
- 44517 multiletter control sequences out of 15000+600000
+ 44524 multiletter control sequences out of 15000+600000
  545342 words of font info for 79 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  63i,13n,98p,1196b,609s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public
 /amsfonts/cm/cmti12.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/esint-type1/esint10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on PSET2.pdf (5 pages, 162512 bytes).
+Output written on PSET2.pdf (6 pages, 428186 bytes).
 PDF statistics:
- 83 PDF objects out of 1000 (max. 8388607)
- 60 compressed objects within 1 object stream
+ 102 PDF objects out of 1000 (max. 8388607)
+ 73 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 13 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 24 words of extra memory for PDF output out of 10000 (max. 10000000)
 
