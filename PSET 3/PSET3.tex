@@ -1,0 +1,343 @@
+\documentclass{article}
+\usepackage[usenames, dvipsnames]{color}
+\usepackage{fancyhdr}
+\usepackage{extramarks}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{mathtools}
+\usepackage{amsthm}
+\usepackage{amsfonts}
+\usepackage[per-mode=fraction]{siunitx}
+\usepackage{tikz}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{afterpage}
+\usepackage{systeme}
+\usepackage{makecell}
+\usepackage{nicematrix}
+\usepackage{physics}
+\usepackage{float}
+\usepackage{tikz}
+\usetikzlibrary{math,arrows,positioning,shapes,fit,calc}
+\usepackage{dsfont}
+\usepackage{wrapfig}
+\usepackage{pgfplots}
+\usepackage{esint}
+\pgfplotsset{compat=1.8}
+
+\definecolor{mediumgreen}{RGB}{0,153,0}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\usetikzlibrary{trees}
+
+%
+% Basic Document Settings
+%
+
+\topmargin=-0.45in
+\evensidemargin=0in
+\oddsidemargin=0in
+\textwidth=6.5in
+\textheight=9.0in
+\headsep=0.25in
+
+\linespread{1.1}
+
+\pagestyle{fancy}
+\lhead{}
+\chead{\hmwkClass\ (\hmwkClassInstructor\/): \hmwkTitle}
+\rhead{\firstxmark}
+\lfoot{\lastxmark}
+\cfoot{\thepage}
+
+\renewcommand\headrulewidth{0.4pt}
+\renewcommand\footrulewidth{0.4pt}
+
+\setlength\parindent{0pt}
+
+%
+% Create Problem Sections
+%
+
+\newcommand{\enterProblemHeader}[1]{
+    \nobreak\extramarks{}{Problem \arabic{#1} continued on next page\ldots}\nobreak{}
+    \nobreak\extramarks{Problem \arabic{#1} (continued)}{Problem \arabic{#1} continued on next page\ldots}\nobreak{}
+}
+
+\newcommand{\exitProblemHeader}[1]{
+    \nobreak\extramarks{Problem \arabic{#1} (continued)}{Problem \arabic{#1} continued on next page\ldots}\nobreak{}
+    \stepcounter{#1}
+    \nobreak\extramarks{Problem \arabic{#1}}{}\nobreak{}
+}
+
+\setcounter{secnumdepth}{0}
+\newcounter{partCounter}
+\newcounter{homeworkProblemCounter}
+\setcounter{homeworkProblemCounter}{1}
+\nobreak\extramarks{Problem \arabic{homeworkProblemCounter}}{}\nobreak{}
+
+%
+% Homework Problem Environment
+%
+% This environment takes an optional argument. When given, it will adjust the
+% problem counter. This is useful for when the problems given for your
+% assignment aren't sequential. See the last 3 problems of this template for an
+% example.
+%
+\newenvironment{homeworkProblem}[1][-1]{
+    \ifnum#1>0
+        \setcounter{homeworkProblemCounter}{#1}
+    \fi
+    \section{Problem \arabic{homeworkProblemCounter}}
+    \setcounter{partCounter}{1}
+    \enterProblemHeader{homeworkProblemCounter}
+}{
+    \exitProblemHeader{homeworkProblemCounter}
+}
+
+%
+% Homework Details
+%   - Title
+%   - Due date
+%   - Class
+%   - Section/Time
+%   - Instructor
+%   - Author
+%
+
+\newcommand{\hmwkTitle}{Homework 3}
+\newcommand{\hmwkDueDate}{Monday January 24, 2022}
+\newcommand{\hmwkClass}{Math 382}
+\newcommand{\hmwkClassTime}{Section A}
+\newcommand{\hmwkClassInstructor}{Prof. Ezra Getzler}
+\newcommand{\hmwkAuthorName}{\textbf{Anthony Tam}}
+
+%
+% Title Page
+%
+
+\title{
+    \vspace{2in}
+    \textmd{\textbf{\hmwkClass:\ \hmwkTitle}}\\
+    \normalsize\vspace{0.1in}\small{Due\ on\ \hmwkDueDate\ at 5:00 PM}\\
+    \vspace{0.1in}\large{\textit{\hmwkClassInstructor\ }}
+    \vspace{3in}
+}
+
+\author{\hmwkAuthorName}
+\date{}
+
+\renewcommand{\part}[1]{\textbf{\large Part \Alph{partCounter}}\stepcounter{partCounter}\\}
+
+%
+% Various Helper Commands
+%
+
+% For derivatives
+\newcommand{\deriv}[1]{\frac{\mathrm{d}}{\mathrm{d}x} (#1)}
+
+% For partial derivatives
+\newcommand{\pderiv}[2]{\frac{\partial}{\partial #1} (#2)}
+
+% Integral dx
+\newcommand{\dx}{\mathrm{d}x}
+
+% Alias for the Solution section header
+\newcommand{\solution}{\textbf{\large Solution}}
+
+% Probability commands: Expectation, Variance, Covariance, Bias
+\newcommand{\E}{\mathrm{E}}
+\newcommand{\Var}{\mathrm{Var}}
+\newcommand{\Cov}{\mathrm{Cov}}
+\newcommand{\Bias}{\mathrm{Bias}}
+
+\newcommand*\circled[1]{\tikz[baseline=(char.base)]{
+            \node[shape=circle,draw,inner sep=2pt] (char) {#1};}}
+
+\newcommand\myeqq{\stackrel{\mathclap{\normalfont\mbox{\scriptsize\text{set}}}}{=}}
+
+\makeatother
+
+\begin{document}
+
+\maketitle
+
+\pagebreak
+
+\begin{homeworkProblem}
+\textbf{Gamelin \textsection 3.1 Exercise 7}: Show that the formula in Green's theorem is invariant under coordinate changes. Suppose that the theorem holds for a bounded domain $D$ with piecewise smooth boundary $\partial D=\gamma .$ Let $F(s, t)=(x(s, t), y(s, t))$ be a continuous function that maps $D$ smoothly, one-to-one and onto a bounded domain $E$, and the boundary $\gamma$ piecewise differentiably, one-to-one and onto the boundary $\eta$ of $E$. Suppose that the Jacobian
+$$
+J_{F}(s, t)=x_{s} y_{t}-x_{t} y_{s}>0
+$$
+is positive. Then Green's theorem holds for $E$. By a smooth function, we mean a function with continuous partial derivatives.\\
+
+\solution
+
+ \begin{proof}
+   Suppose Green's theorem holds on $D \subseteq \mathbb{C}$, i.e., if $U$ and $V$ are $C^1$ functions of $s$ and $t$ on $\overline{D}$, then
+   \begin{align*}
+    \int_{\partial D = \gamma} U(s,t) ds + V(s,t) dt = \iint_{D} \left( \frac{\partial V}{\partial s} - \frac{\partial U}{\partial t}\right)dsdt
+    .\end{align*}
+   We want to show this holds for the region $E$, which is the image of $D$ under the coordinate transformation $F(s,t)$. First note that $F$ is smooth, i.e., is $C^{\infty}$. Now consider the double integral of the $C^1$ function $-P_y(x,y)$ on $F(D) = E$, and rewrite it as a double integral over $D$ by pulling back the integrand:
+   \begin{align*}
+    \iint_{F(D) = E} -P_y(x,y) dxdy = \iint_D (-P_y\circ F)(s,t) \abs{\text{det}\, DF(s,t)}dsdt
+    .\end{align*}
+    Since $\text{det}\, DF(s,t) = J_F(s,t) > 0$, then $F$ is orientation preserving and we can take out absolute values to get
+    \begin{align*}
+      \iint_{F(D) = E} -P_y(x,y) dxdy = \iint_D -P_y(x(s,t), y(s,t)) \left( \frac{\partial x}{\partial s}\frac{\partial y}{\partial t} - \frac{\partial x}{\partial t}\frac{\partial y}{\partial s} \right)dsdt
+     .\end{align*}
+   Now similarly for the $C^1$ function $Q_x(x,y)$ on $E$, we have
+   \begin{align*}
+     \iint_{F(D) = E} Q_x(x,y) dxdy = \iint_D Q_x(x(s,t), y(s,t)) \left( \frac{\partial x}{\partial s}\frac{\partial y}{\partial t} - \frac{\partial x}{\partial t}\frac{\partial y}{\partial s} \right)dsdt
+    .\end{align*}
+   Computing the line integral of $P$ over $\eta$, which is exactly the image of $\partial D = \gamma$ under $F$, we can use the change of variables formula again to get
+   \begin{align*}
+    \int_{F(\gamma) = \eta}P(x,y) dx &= \int_{\gamma} (P \circ F)(s,t) \left( \frac{\partial x}{\partial s}ds + \frac{\partial x}{\partial t}dt \right)\\
+    &= \int_{\gamma} \left( P(x(s,t), y(s,t)) \frac{\partial x}{\partial s}ds + P(x(s,t), y(s,t)) \frac{\partial x}{\partial t}dt \right)
+    .\end{align*}
+   By noting that $\gamma = \partial D$ and that the integrand is indeed $C^1$, we can apply Green's Theorem to change this to a double integral on $D$ to get
+   \begin{align*}
+     \int_{\eta}P(x,y) dx &= \int_{\gamma} \left( P(x(s,t), y(s,t)) \frac{\partial x}{\partial s}ds + P(x(s,t), y(s,t)) \frac{\partial x}{\partial t}dt \right)\\
+     &= \iint_D \partial_s \left( P(x(s,t), y(s,t)) \frac{\partial x}{\partial t} \right) - \partial_t \left( P(x(s,t), y(s,t)) \frac{\partial x}{\partial s}\right) dsdt\\
+     &= \iint_D \left(\partial_s \left[ P(x(s,t), y(s,t)) \right]\frac{\partial x}{\partial t} + P(x(s,t), y(s,t))\frac{\partial^2 x}{\partial t\partial s}\right. \\
+     & \hspace{1.5cm} \left. - \partial_t \left[ P(x(s,t), y(s,t)) \right] \frac{\partial x}{\partial s} - P(x(s,t), y(s,t))\frac{\partial^2 x}{\partial s\partial t}\right) dsdt
+    .\end{align*}
+   By the chain rule, we can compute
+   \begin{align*}
+     \partial_s \left[ P(x(s,t), y(s,t)) \right] = \frac{\partial P}{\partial x} \frac{\partial x}{\partial s} + \frac{\partial P}{\partial y} \frac{\partial y}{\partial s} \; \text{ and } \; \partial_t \left[ P(x(s,t), y(s,t)) \right] = \frac{\partial P}{\partial x} \frac{\partial x}{\partial t} + \frac{\partial P}{\partial y} \frac{\partial y}{\partial t}
+    .\end{align*}
+   Since $F$ is smooth and thus the coordinate functions are at least $C^2$, the mixed partials commute and cancel to give
+   \begin{align*}
+     \int_{\eta}P(x,y) dx &= \iint_D \left(\frac{\partial P}{\partial x} \frac{\partial x}{\partial s} + \frac{\partial P}{\partial y} \frac{\partial y}{\partial s}\right) \frac{\partial x}{\partial t} - \left(\frac{\partial P}{\partial x} \frac{\partial x}{\partial t} + \frac{\partial P}{\partial y} \frac{\partial y}{\partial t}\right) \frac{\partial x}{\partial s} dsdt\\
+     &= \iint_D \left(\frac{\partial P}{\partial y} \frac{\partial y}{\partial s}\frac{\partial x}{\partial t} - \frac{\partial P}{\partial y} \frac{\partial y}{\partial t}\frac{\partial x}{\partial s}\right) dsdt\\
+     &= \iint_D -P_y(x(s,t), y(s,t)) \left(\frac{\partial x}{\partial s}\frac{\partial y}{\partial t} - \frac{\partial x}{\partial t}\frac{\partial y}{\partial s}\right) dsdt
+    .\end{align*}
+   But recall above that we showed that this integral over $D$ is equivalent to another integral over $E$ by change of variables and hence
+   \begin{align*}
+     \int_{\eta}P(x,y) dx &= \iint_D -P_y(x(s,t), y(s,t)) \left(\frac{\partial x}{\partial s}\frac{\partial y}{\partial t} - \frac{\partial x}{\partial t}\frac{\partial y}{\partial s}\right) dsdt\\
+     &= \iint_D (-P_y \circ F)(s,t) \, \text{det}\, DF(s,t)\, dsdt\\
+     &= \iint_{F(D) = E} -P_y(x,y) dxdy
+    ,\end{align*}
+   which is one part of the statement of Green's Theorem. What is left to show is the statement about $Qdy$, so similarly compute
+   \begin{align*}
+     \int_{\eta}Q(x,y) dy &= \int_{\gamma} (Q \circ F)(s,t) \left( \frac{\partial y}{\partial s}ds + \frac{\partial y}{\partial t}dt \right)\\
+     &= \int_{\gamma} \left( Q(x(s,t), y(s,t)) \frac{\partial y}{\partial s}ds + Q(x(s,t), y(s,t)) \frac{\partial y}{\partial t}dt \right)\\
+     &= \iint_D \partial_s \left( Q(x(s,t), y(s,t)) \frac{\partial y}{\partial t} \right) - \partial_t \left( Q(x(s,t), y(s,t)) \frac{\partial y}{\partial s}\right) dsdt\\
+     &= \iint_D \left(\partial_s \left[ Q(x(s,t), y(s,t)) \right]\frac{\partial y}{\partial t} + Q(x(s,t), y(s,t))\frac{\partial^2 y}{\partial t\partial s}\right. \\
+     & \hspace{1.5cm} \left. - \partial_t \left[ Q(x(s,t), y(s,t)) \right] \frac{\partial y}{\partial s} - Q(x(s,t), y(s,t))\frac{\partial^2 y}{\partial s\partial t}\right) dsdt\\
+     &= \iint_D \left(\frac{\partial Q}{\partial x} \frac{\partial x}{\partial s} + \frac{\partial Q}{\partial y} \frac{\partial y}{\partial s}\right) \frac{\partial y}{\partial t} - \left(\frac{\partial Q}{\partial x} \frac{\partial x}{\partial t} + \frac{\partial Q}{\partial y} \frac{\partial y}{\partial t}\right) \frac{\partial y}{\partial s} dsdt\\
+     &= \iint_D Q_x(x(s,t), y(s,t)) \left(\frac{\partial x}{\partial s}\frac{\partial y}{\partial t} - \frac{\partial x}{\partial t}\frac{\partial y}{\partial s}\right) dsdt\\
+     &= \iint_{D} (Q_x \circ F)(s,t)\, \text{det}\, DF(s,t)\, dsdt\\
+     &= \iint_{F(D) = E} Q_x(x,y)\, dxdy
+    .\end{align*}
+   Adding both equalities gives the statement of Green's theorem on $E$,
+   \begin{align*}
+     \int_{\partial E = \eta}P(x,y) dx + Q(x,y) dy = \iint_{E} \left( \frac{\partial Q}{\partial x} - \frac{\partial P}{\partial y} \right) \, dxdy
+    ,\end{align*}
+  as claimed.
+ \end{proof}
+\end{homeworkProblem}
+
+\pagebreak
+
+\begin{homeworkProblem}
+The Fundamental Theorem of Calculus says that
+$$
+F\left(z_{1}\right)-F\left(z_{0}\right)=\int_{\gamma} f(z) d z
+$$
+where $F(z)$ is a complex differentiable function with domain $U, \gamma$ is a piecewise differentiable function in $U$ starting at $z_{0}$ and ending at $z_{1}$, and $f(z)=F^{\prime}(z)$. Write out the proof of the special case that $\gamma$ is a path obtained by concatenating together a finite number of paths that are parallel to the axes. As we saw in class, by Cauchy's Theorem, this implies the Fundamental Theorem of Calculus in the general case.\\
+
+\solution
+
+ \begin{proof}
+Suppose $F: U \to \mathbb{C}$ with domain $\varnothing \neq U \subseteq \mathbb{C}$ be a primitive for $f$ with $F(z) = F(x+iy) = u(x,y) + i v(x,y)$. Let $C$ be a smooth curve with $\gamma: [a,b] \to U$ an orientation preserving parameterization defined by $\gamma(t) = x(t) + iy(t)$. Let us first recall that from Discussion 2 that a $C^1$ function defined on $U$ is complex differentiable at $z$ if and only if its derivative at $z$ considered as a function from $\mathbb{R}^2 \to \mathbb{R}^2$ is of the form $\begin{bmatrix} a & - b \\ b & a \end{bmatrix}$ for some $a, b \in \mathbb{R}$. Further, we worked out that this condition was satisfied by the Cauchy Riemann equations. So, using this fact, consider the one-to-one correspondances
+\begin{align*}
+ F(z) = u(x,y) + iv(x,y) \, \longleftrightarrow \mathbf{F}(x,y) = \begin{bmatrix} u(x,y) \\ v(x,y) \end{bmatrix}\\
+ \gamma(t) = x(t) + iy(t) \, \longleftrightarrow \mathbf{\Gamma}(t) = \begin{bmatrix} x(t) \\ y(t) \end{bmatrix}
+ .\end{align*}
+We can abuse notation and represent the derivative of $F$ and its compositions with $\gamma$ in matrix form under these one to one correspondances and utilize the multivariable chain rule to compute
+\begin{align*}
+ F'(\gamma(t))\gamma'(t) &= D \mathbf{F}(\mathbf{\Gamma}(t))D \mathbf{\Gamma}(t)\\
+ &= \left[\begin{matrix} \frac{\partial u}{\partial x} & \frac{\partial u}{\partial y}\\ \frac{\partial v}{\partial x} & \frac{\partial v}{\partial y} \end{matrix}\right] \left[\begin{matrix} \frac{\partial x}{\partial t} \\ \frac{\partial y}{\partial t} \end{matrix}\right]\\
+ &= \begin{bmatrix} \frac{\partial u}{\partial x}\frac{\partial x}{\partial t} + \frac{\partial u}{\partial y}\frac{\partial y}{\partial t} \\ \frac{\partial v}{\partial x}\frac{\partial x}{\partial t} +  \frac{\partial v}{\partial y}\frac{\partial y}{\partial t}\end{bmatrix}\\
+ &= \begin{bmatrix} \frac{\partial u}{\partial t} \\ \frac{\partial v}{\partial t} \end{bmatrix}\\
+ &= D( \mathbf{F} \circ \mathbf{\Gamma})(t)\\
+ &= D(F \circ \gamma)(t)\\
+ &= (F\circ \gamma)'(t)
+ .\end{align*}
+Using this result, we can safely compute the desire line integral:
+\begin{align*}
+ \int_C f(z) dz &= \int_{C} F'(z) dz \\
+ &= \int_a^b F'(\gamma(t))\gamma(t) dt\\
+ &= \int_a^b (F \circ \gamma)'(t) dt\\
+ &= \int_a^b \text{Re}\left[(F \circ \gamma)'(t)\right] dt + i \int_a^b \text{Im}\left[(F \circ \gamma)'(t)\right] dt,\end{align*}
+where we split up real and imaginary parts. Since differentiation is done coordinate-wise, we can bring in the real and imaginary part operators and apply the single-variable real-valued Fundamental Theorem of Calculus:
+\begin{align*}
+  \int_C f(z) dz &= \int_a^b (\text{Re}\, F \circ \gamma)'(t) dt + i \int_a^b (\text{Im}\,F \circ \gamma)'(t)dt\\
+  &= \text{Re}\, F(\gamma(b)) - \text{Re}\, F(\gamma(a)) + i \,\text{Im}\, F(\gamma(b)) - i\, \text{Im}\, F(\gamma(a))\\
+  &= \left[\text{Re}\, F(\gamma(b))+ i \,\text{Im}\, F(\gamma(b))\right] - \left[ \text{Re}\, F(\gamma(a)) + i\, \text{Im}\, F(\gamma(a)) \right]\\
+  &= F(\gamma(b)) - F(\gamma(a))\\
+  &= F(z_1) - F(z_0)
+ .\end{align*}
+If $C = C_1 \cup \cdots \cup C_k$ is piecewise smooth, then denote by $a_i$ and $b_i$ the starting and ending points of $C_i$, and note that $a_1 = z_0$, $b_k = z_1$, and $b_i = a_{i + 1}$ for each $i = 1, \ldots, k -1$. Thus we have the same result for piecewise smooth curves
+\begin{align*}
+ \int_C f(z)dz = \int_{C} F'(z) dz &= \int_{C_k}F'(z)dz + \cdots + \int_{C_1} F'(z)dz\\
+ &= F(b_k) \underbrace{- F(a_k) + F(b_{k-1})}_{=0} \underbrace{- F(a_{k-1}) + F(b_{k-2})}_{=0} - \cdots \underbrace{- F(a_2) + F(b_1)}_{=0}- F(a_1)\\
+ &= F(z_1) - F(z_0)
+ ,\end{align*}
+as claimed.
+ \end{proof}
+\end{homeworkProblem}
+
+\pagebreak
+
+\begin{homeworkProblem}
+\textbf{Gamelin \textsection IV.3 Exercise 1}:
+By taking the line integral of the complex differentiable function $f(z)=e^{-z^{2} / 2}$ around a rectangle with vertices $\pm R$, it $\pm R$, and sending $R$ to $\infty$, show that
+$$
+\frac{1}{\sqrt{2 \pi}} \int_{-\infty}^{\infty} e^{-x^{2} / 2} e^{-i t x} d x=e^{-t^{2} / 2}, \quad-\infty<t<\infty
+$$
+You may assume the definite integral
+$$
+\int_{-\infty}^{\infty} e^{-x^{2} / 2} d x=\sqrt{2 \pi}.
+$$
+
+\solution
+
+\begin{proof}
+  Let $C$ be the curve traversing the rectangle with vertices $\left\{ \pm R, it \pm R \right\}$. Note that $C$ is a simple, closed curve so the following closed loop integral vanishes
+  \begin{align*}
+    \oint_C e^{-z^2/2} = 0
+   ,\end{align*}
+  which follows from the fact that $f(z) = e^{-z^2}$ is analytic and $C$ lies in $\mathbb{C}$, a simply connected domain, and applying Cauchy's Theorem. But, let us parametrize $C$ by the following piecewise differentiable paths
+  \begin{align*}
+   \begin{cases}
+    \gamma_1(s) = s, & s \in [-R, R]\\
+    \gamma_2(s) = R + is, & s \in [0,t]\\
+    \gamma_3(s) = -s + it, & s \in [-R, R]\\
+    \gamma_4(s) = R + (t - s)i, & s \in [0,t],
+   \end{cases}
+   \end{align*}
+  such that $C = \gamma_1 \cup \gamma_2 \cup \gamma_3 \cup \gamma_4$. Then we have the following relation,
+  \begin{align*}
+   0 = \oint_C e^{-z^2/2} = \int_{-R}^{R} e^{-s^2/2}ds + i \int_{0}^t e^{-(R+is)^2/2}ds - \int_{-R}^R e^{-(-s + it)^2/2}ds - i \int_{0}^te^{-(R + (t-s)i)^2/2}ds
+   .\end{align*}
+  But note that the in two integrals from $0$ to $t$, we have $R$ dependence in the integrand so that as we take the limit as $R$ tends to $\infty$, we get that for any fixed $t$, the integral vanishes:
+  \begin{align*}
+    i \int_{0}^t e^{-(R+is)^2/2}ds = i \int_0^t e^{-R^2/2}e^{-isR}e^{s^2}ds = 0
+   ,\end{align*}
+  since the $e^{-R^2/2}$ term will dominate to zero as $R \to \infty $ and similarly for $- i \int_{0}^te^{-(R + (t-s)i)^2/2}ds$. So overall after taking limits, we have
+  \begin{align*}
+    0 = \lim_{R \to \infty}\int_{-R}^{R} e^{-s^2/2}ds - \lim_{R \to \infty}\int_{-R}^R e^{-(-s + it)^2/2}ds
+   ,\end{align*}
+  which after expanding and using the value of the Gaussian integral, we get
+  \begin{align*}
+    \lim_{R \to \infty}\int_{-R}^{R} e^{-s^2/2}ds = \lim_{R \to \infty}\int_{-R}^R e^{-(-s + it)^2/2}ds\\
+    \iff \sqrt{2\pi} = e^{t^2/2} \int_{-\infty}^{\infty}e^{-s^2/2}e^{-ist}ds\\
+    \iff \frac{1}{\sqrt{2\pi}} \int_{-\infty}^{\infty}e^{-s^2/2}e^{-ist}ds = e^{-t^2/2}
+   ,\end{align*}
+  as was to be shown.
+\end{proof}
+\end{homeworkProblem}
+
+\end{document}
