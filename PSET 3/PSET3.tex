@@ -257,12 +257,12 @@ Suppose $F: U \to \mathbb{C}$ with domain $\varnothing \neq U \subseteq \mathbb{
  .\end{align*}
 We can abuse notation and represent the derivative of $F$ and its compositions with $\gamma$ in matrix form under these one to one correspondances and utilize the multivariable chain rule to compute
 \begin{align*}
- F'(\gamma(t))\gamma'(t) &= D \mathbf{F}(\mathbf{\Gamma}(t))D \mathbf{\Gamma}(t)\\
+ F'(\gamma(t))\gamma'(t) &\leftrightarrow D \mathbf{F}(\mathbf{\Gamma}(t))D \mathbf{\Gamma}(t)\\
  &= \left[\begin{matrix} \frac{\partial u}{\partial x} & \frac{\partial u}{\partial y}\\ \frac{\partial v}{\partial x} & \frac{\partial v}{\partial y} \end{matrix}\right] \left[\begin{matrix} \frac{\partial x}{\partial t} \\ \frac{\partial y}{\partial t} \end{matrix}\right]\\
  &= \begin{bmatrix} \frac{\partial u}{\partial x}\frac{\partial x}{\partial t} + \frac{\partial u}{\partial y}\frac{\partial y}{\partial t} \\ \frac{\partial v}{\partial x}\frac{\partial x}{\partial t} +  \frac{\partial v}{\partial y}\frac{\partial y}{\partial t}\end{bmatrix}\\
  &= \begin{bmatrix} \frac{\partial u}{\partial t} \\ \frac{\partial v}{\partial t} \end{bmatrix}\\
  &= D( \mathbf{F} \circ \mathbf{\Gamma})(t)\\
- &= D(F \circ \gamma)(t)\\
+ &\leftrightarrow D(F \circ \gamma)(t)\\
  &= (F\circ \gamma)'(t)
  .\end{align*}
 Using this result, we can safely compute the desire line integral:
@@ -324,9 +324,9 @@ $$
    .\end{align*}
   But note that the in two integrals from $0$ to $t$, we have $R$ dependence in the integrand so that as we take the limit as $R$ tends to $\infty$, we get that for any fixed $t$, the integral vanishes:
   \begin{align*}
-    i \int_{0}^t e^{-(R+is)^2/2}ds = i \int_0^t e^{-R^2/2}e^{-isR}e^{s^2}ds = 0
+    i \int_{0}^t e^{-(R+is)^2/2}ds = i \int_0^t e^{-R^2/2}e^{-isR}e^{s^2/2}ds = 0
    ,\end{align*}
-  since the $e^{-R^2/2}$ term will dominate to zero as $R \to \infty $ and similarly for $- i \int_{0}^te^{-(R + (t-s)i)^2/2}ds$. So overall after taking limits, we have
+  since the $e^{-R^2/2}$ term will dominate to zero as $R \to \infty $ as the $e^{-isR}e^{s^2/2}$ term stays bounded; the integral $- i \int_{0}^te^{-(R + (t-s)i)^2/2}ds$ similarly vanishes. So overall after taking limits, we have
   \begin{align*}
     0 = \lim_{R \to \infty}\int_{-R}^{R} e^{-s^2/2}ds - \lim_{R \to \infty}\int_{-R}^R e^{-(-s + it)^2/2}ds
    ,\end{align*}
