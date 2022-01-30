@@ -1,0 +1,277 @@
+\documentclass{article}
+\usepackage[usenames, dvipsnames]{color}
+\usepackage{fancyhdr}
+\usepackage{extramarks}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{mathtools}
+\usepackage{amsthm}
+\usepackage{amsfonts}
+\usepackage[per-mode=fraction]{siunitx}
+\usepackage{tikz}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{afterpage}
+\usepackage{systeme}
+\usepackage{makecell}
+\usepackage{nicematrix}
+\usepackage{physics}
+\usepackage{float}
+\usepackage{tikz}
+\usetikzlibrary{math,arrows,positioning,shapes,fit,calc}
+\usepackage{dsfont}
+\usepackage{wrapfig}
+\usepackage{pgfplots}
+\usepackage{esint}
+\pgfplotsset{compat=1.8}
+
+\definecolor{mediumgreen}{RGB}{0,153,0}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\usetikzlibrary{trees}
+
+%
+% Basic Document Settings
+%
+
+\topmargin=-0.45in
+\evensidemargin=0in
+\oddsidemargin=0in
+\textwidth=6.5in
+\textheight=9.0in
+\headsep=0.25in
+
+\linespread{1.1}
+
+\pagestyle{fancy}
+\lhead{}
+\chead{\hmwkClass\ (\hmwkClassInstructor\/): \hmwkTitle}
+\rhead{\firstxmark}
+\lfoot{\lastxmark}
+\cfoot{\thepage}
+
+\renewcommand\headrulewidth{0.4pt}
+\renewcommand\footrulewidth{0.4pt}
+
+\setlength\parindent{0pt}
+
+%
+% Create Problem Sections
+%
+
+\newcommand{\enterProblemHeader}[1]{
+    \nobreak\extramarks{}{Problem \arabic{#1} continued on next page\ldots}\nobreak{}
+    \nobreak\extramarks{Problem \arabic{#1} (continued)}{Problem \arabic{#1} continued on next page\ldots}\nobreak{}
+}
+
+\newcommand{\exitProblemHeader}[1]{
+    \nobreak\extramarks{Problem \arabic{#1} (continued)}{Problem \arabic{#1} continued on next page\ldots}\nobreak{}
+    \stepcounter{#1}
+    \nobreak\extramarks{Problem \arabic{#1}}{}\nobreak{}
+}
+
+\setcounter{secnumdepth}{0}
+\newcounter{partCounter}
+\newcounter{homeworkProblemCounter}
+\setcounter{homeworkProblemCounter}{1}
+\nobreak\extramarks{Problem \arabic{homeworkProblemCounter}}{}\nobreak{}
+
+%
+% Homework Problem Environment
+%
+% This environment takes an optional argument. When given, it will adjust the
+% problem counter. This is useful for when the problems given for your
+% assignment aren't sequential. See the last 3 problems of this template for an
+% example.
+%
+\newenvironment{homeworkProblem}[1][-1]{
+    \ifnum#1>0
+        \setcounter{homeworkProblemCounter}{#1}
+    \fi
+    \section{Problem \arabic{homeworkProblemCounter}}
+    \setcounter{partCounter}{1}
+    \enterProblemHeader{homeworkProblemCounter}
+}{
+    \exitProblemHeader{homeworkProblemCounter}
+}
+
+%
+% Homework Details
+%   - Title
+%   - Due date
+%   - Class
+%   - Section/Time
+%   - Instructor
+%   - Author
+%
+
+\newcommand{\hmwkTitle}{Homework 4}
+\newcommand{\hmwkDueDate}{Sunday January 30, 2022}
+\newcommand{\hmwkClass}{Math 382}
+\newcommand{\hmwkClassTime}{Section A}
+\newcommand{\hmwkClassInstructor}{Prof. Ezra Getzler}
+\newcommand{\hmwkAuthorName}{\textbf{Anthony Tam}}
+
+%
+% Title Page
+%
+
+\title{
+    \vspace{2in}
+    \textmd{\textbf{\hmwkClass:\ \hmwkTitle}}\\
+    \normalsize\vspace{0.1in}\small{Due\ on\ \hmwkDueDate\ at 5:00 PM}\\
+    \vspace{0.1in}\large{\textit{\hmwkClassInstructor\ }}
+    \vspace{3in}
+}
+
+\author{\hmwkAuthorName}
+\date{}
+
+\renewcommand{\part}[1]{\textbf{\large Part \Alph{partCounter}}\stepcounter{partCounter}\\}
+
+%
+% Various Helper Commands
+%
+
+% For derivatives
+\newcommand{\deriv}[1]{\frac{\mathrm{d}}{\mathrm{d}x} (#1)}
+
+% For partial derivatives
+\newcommand{\pderiv}[2]{\frac{\partial}{\partial #1} (#2)}
+
+% Integral dx
+\newcommand{\dx}{\mathrm{d}x}
+
+% Alias for the Solution section header
+\newcommand{\solution}{\textbf{\large Solution}}
+
+% Probability commands: Expectation, Variance, Covariance, Bias
+\newcommand{\E}{\mathrm{E}}
+\newcommand{\Var}{\mathrm{Var}}
+\newcommand{\Cov}{\mathrm{Cov}}
+\newcommand{\Bias}{\mathrm{Bias}}
+
+\newcommand*\circled[1]{\tikz[baseline=(char.base)]{
+            \node[shape=circle,draw,inner sep=2pt] (char) {#1};}}
+
+\newcommand\myeqq{\stackrel{\mathclap{\normalfont\mbox{\scriptsize\text{set}}}}{=}}
+
+\makeatother
+
+\begin{document}
+
+\maketitle
+
+\pagebreak
+
+\begin{homeworkProblem}
+The function $f(z)=\tan z$ solves the first-order ordinary differential equation $f^{\prime}(z)=1+f(z)^{2}$, with initial condition $f(0)=0$.
+
+1) Show that the solution of this equation is odd. (Hint: the solution of a first-order ordinary differential equation is determined by its value at $z=0$. But $g(z)=-f(-z)$ solves the same equation.)
+
+2) Consider the Taylor series of $f(z)$ around $z=0$ :
+$$
+\sum_{k=0}^{\infty} \frac{a_{2 k+1} z^{2 k+1}}{(2 k+1) !}
+$$
+(This is the most general Taylor series for an odd function.) Convert the differential equation into an equation for $a_{2 k+1}$ in terms of $a_{2 j+1}, 0 \leq j<k$.
+
+3) Write pseudocode for a program to calculate the coefficient $a_{2 k+1}$, given a positive integer $k$. This may be an outline of a computer program in any of your favorite structured languages (for example Python), together with a series of lines that explain the sequence of instructions in such a program.
+
+4) Calculate the first three nonzero terms of the Taylor series. How accurate is the resulting polynomial as an approximation for $\tan z$, when $z=1 / 100 ?$
+
+5) Calculate the first three nonzero coefficients of the power series $f(z) \cos z$, and show that they equal the first three nonzero coefficients of the power series $\sin z$.\\
+
+\solution\\
+
+\part
+
+\vspace{-0.5cm}
+
+ \begin{proof}
+Note that if $f(z)$ solves the differential equation, the function $g(z) = -f(-z)$ solves it too:
+\begin{align*}
+ g'(z) = 1 + g(z)^2 \iff f'(-z) = 1 + [f(-z)]^2
+ .\end{align*}
+But, we know that linear combinations of particular solutions also give a solution, so in particular
+\begin{align*}
+ \frac{f(x) + g(x)}{2} = \frac{f(x)- f(-x)}{2}
+ ,\end{align*}
+is also a solution. Given the initial condition $f(0) = 0$, we know that this solution is unique, so we must have
+\begin{align*}
+ f(x) = \frac{f(x)- f(-x)}{2} \iff f(-x) = -f(x)
+ ,\end{align*}
+and thus the solution $f(z)$ is odd.
+ \end{proof}
+
+\part\\
+
+Plugging in the Taylor series, we get the following after differentiating term by term and expanding the Cauchy product
+\begin{align*}
+ \left( \sum_{k=0}^{\infty} a_{2k+1} \frac{z^{2k + 1}}{(2k+1)!}\right)' = 1 + \left(\sum_{k=0}^{\infty} a_{2k+1} \frac{z^{2k + 1}}{(2k+1)!}\right)^2\\
+ \iff \sum_{k=0}^{\infty} a_{2k+1} \frac{z^{2k}}{(2k)!} - \sum_{k=0}^{\infty} \left( \sum_{j=0}^{k} \frac{a_{2j + 1}}{(2j + 1)!} \cdot \frac{a_{2(k-j) + 1}}{(2(k-j) + 1)!} \right)z^{2k+1} - 1 = 0
+ .\end{align*}
+\textcolor{red}{FINISH}
+\end{homeworkProblem}
+
+\pagebreak
+
+\begin{homeworkProblem}
+  Calculate the Taylor series of the function $f_{k}(z)=(1-z)^{-k}$ at $z=0$. What is the radius of convergence of this series? Justify.\\
+
+  \solution\\
+
+  \vspace{-0.5cm}
+
+   \begin{proof}
+     First let us compute the $n^{\text{th}}$ derivative of $f_k$ at zero:
+     \begin{align*}
+      f_k^{(1)}(0) = k,\,  f_k^{(1)}(0) = k(k+1)\,, \ldots, f_k^{(n)}(0) = k(k+1)\cdots(k+n-1) = k^{(n)}
+      ,\end{align*}
+    where $k^{(n)}$ denotes the rising factorial. Then the Taylor series of $f_k(z)$ centered at $z=0$ is given by
+    \begin{align*}
+     f_k(z) = \sum_{n=0}^{\infty} \frac{f^{(n)}(0)}{n!}z^n = \sum_{n=0}^{\infty} \frac{k^{(n)}}{n!}z^n = \sum_{n=0}^{\infty} \left(\begin{matrix}k + n-1 \\ n\end{matrix}\right) z^n
+     ,\end{align*}
+    where we use the relation $k^{(n)}=\frac{(k+n-1) !}{(k-1) !}$ and thus $ \frac{k^{(n)}}{n!} = \left(\begin{matrix}k + n-1 \\ n\end{matrix}\right) $. For the radius of convergence, let us apply the ratio test to $a_k = \left(\begin{matrix}k + n-1 \\ n\end{matrix}\right)$:
+    \begin{align*}
+     R = \lim_{n \to \infty} \abs{ \frac{\left(\begin{matrix}k + n-1 \\ n\end{matrix}\right)}{\left(\begin{matrix}k + n \\ n +1 \end{matrix}\right)} } &= \lim_{n \to \infty} \frac{(k + n -1)!}{n! (k-1)!} \cdot \frac{(n+1)!(k+1)!}{(k+n)!}\\
+     &= \lim_{n \to \infty} \frac{(k + n -1)!}{n! (k-1)!} \cdot \frac{(n+1)(n!)(k+1)(k)(k-1)!}{(k+n)(k+n-1)!}\\
+     &= \lim_{n \to \infty} \frac{k(k+1)(n+1)}{k+n}\\
+     &= k(k+1)
+     .\end{align*}
+    Hence, the radius of convergence is $R = k(k+1)$.
+   \end{proof}
+\end{homeworkProblem}
+
+\pagebreak
+
+\begin{homeworkProblem}
+  \textbf{Gameline \textsection V.3 Exercise 6}: Show the series $\sum a_{k} z^{k}$, the differentiated series $\sum k a_{k} z^{k-1}$, and the integrated series $\sum \frac{a_{k}}{k+1} z^{k+1}$ all have the same radius of convergence.\\
+
+  \solution\\
+
+  \vspace{-0.5cm}
+
+   \begin{proof}
+   Consider the power series $\sum_{k \geq 0} a_k z^k$. The Cauchy Hadamard formula gives taht this power series has a radius of convergence
+   \begin{align*}
+    R = \frac{1}{\limsup_{k \to \infty} \sqrt[k]{\abs{a_k}}}
+    .\end{align*}
+    Using the fact that $\limsup_{k \to \infty} \sqrt[k]{k} = 1$, we have that the differentiated series $\sum_{k \geq 1} ka_k z^{k-1}$ has radius of convergence
+    \begin{align*}
+     R' &= \frac{1}{\limsup_{k \to \infty} \sqrt[k]{\abs{ka_k}}}\\
+     &= \frac{1}{\limsup_{k \to \infty} \sqrt[k]{k}\sqrt[k]{\abs{a_k}}}\\
+     &= \frac{1}{\limsup_{k \to \infty} \sqrt[k]{\abs{a_k}}}\\
+     &= R
+     .\end{align*}
+     Similarly, using the fact that $\limsup_{k \to \infty} \sqrt[k]{1/(k+1)} = 1$, we have that the integrated series $\sum_{k \geq 0} \frac{a_k}{k+1}z^{k+1}$ has radius of convergence
+     \begin{align*}
+       R'' &= \frac{1}{\limsup_{k \to \infty} \sqrt[k]{\abs{ \frac{a_k}{k+1} }}}\\
+       &= \frac{1}{\limsup_{k \to \infty} \sqrt[k]{\frac{1}{k+1} }\sqrt[k]{\abs{a_k}}}\\
+       &= \frac{1}{\limsup_{k \to \infty} \sqrt[k]{\abs{a_k}}}\\
+       &= R
+      .\end{align*}
+    Thus all series have the same radius of convergence $R = R' = R''$.
+   \end{proof}
+\end{homeworkProblem}
+
+\end{document}
