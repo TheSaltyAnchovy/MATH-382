@@ -1,0 +1,281 @@
+\documentclass{article}
+\usepackage[usenames, dvipsnames]{color}
+\usepackage{fancyhdr}
+\usepackage{extramarks}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{mathtools}
+\usepackage{amsthm}
+\usepackage{amsfonts}
+\usepackage[per-mode=fraction]{siunitx}
+\usepackage{tikz}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{afterpage}
+\usepackage{systeme}
+\usepackage{makecell}
+\usepackage{nicematrix}
+\usepackage{physics}
+\usepackage{float}
+\usepackage{tikz}
+\usetikzlibrary{math,arrows,positioning,shapes,fit,calc}
+\usepackage{dsfont}
+\usepackage{wrapfig}
+\usepackage{pgfplots}
+\usepackage{esint}
+\usepackage{algorithm}
+\usepackage{algorithmic}
+
+\pgfplotsset{compat=1.8}
+
+\definecolor{mediumgreen}{RGB}{0,153,0}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\usetikzlibrary{trees}
+
+%
+% Basic Document Settings
+%
+
+\topmargin=-0.45in
+\evensidemargin=0in
+\oddsidemargin=0in
+\textwidth=6.5in
+\textheight=9.0in
+\headsep=0.25in
+
+\linespread{1.1}
+
+\pagestyle{fancy}
+\lhead{}
+\chead{\hmwkClass\ (\hmwkClassInstructor\/): \hmwkTitle}
+\rhead{\firstxmark}
+\lfoot{\lastxmark}
+\cfoot{\thepage}
+
+\renewcommand\headrulewidth{0.4pt}
+\renewcommand\footrulewidth{0.4pt}
+
+\setlength\parindent{0pt}
+
+%
+% Create Problem Sections
+%
+
+\newcommand{\enterProblemHeader}[1]{
+    \nobreak\extramarks{}{Problem \arabic{#1} continued on next page\ldots}\nobreak{}
+    \nobreak\extramarks{Problem \arabic{#1} (continued)}{Problem \arabic{#1} continued on next page\ldots}\nobreak{}
+}
+
+\newcommand{\exitProblemHeader}[1]{
+    \nobreak\extramarks{Problem \arabic{#1} (continued)}{Problem \arabic{#1} continued on next page\ldots}\nobreak{}
+    \stepcounter{#1}
+    \nobreak\extramarks{Problem \arabic{#1}}{}\nobreak{}
+}
+
+\setcounter{secnumdepth}{0}
+\newcounter{partCounter}
+\newcounter{homeworkProblemCounter}
+\setcounter{homeworkProblemCounter}{1}
+\nobreak\extramarks{Problem \arabic{homeworkProblemCounter}}{}\nobreak{}
+
+%
+% Homework Problem Environment
+%
+% This environment takes an optional argument. When given, it will adjust the
+% problem counter. This is useful for when the problems given for your
+% assignment aren't sequential. See the last 3 problems of this template for an
+% example.
+%
+\newenvironment{homeworkProblem}[1][-1]{
+    \ifnum#1>0
+        \setcounter{homeworkProblemCounter}{#1}
+    \fi
+    \section{Problem \arabic{homeworkProblemCounter}}
+    \setcounter{partCounter}{1}
+    \enterProblemHeader{homeworkProblemCounter}
+}{
+    \exitProblemHeader{homeworkProblemCounter}
+}
+
+%
+% Homework Details
+%   - Title
+%   - Due date
+%   - Class
+%   - Section/Time
+%   - Instructor
+%   - Author
+%
+
+\newcommand{\hmwkTitle}{Homework 5}
+\newcommand{\hmwkDueDate}{Wednesday February 9, 2022}
+\newcommand{\hmwkClass}{Math 382}
+\newcommand{\hmwkClassTime}{Section A}
+\newcommand{\hmwkClassInstructor}{Prof. Ezra Getzler}
+\newcommand{\hmwkAuthorName}{\textbf{Anthony Tam}}
+
+%
+% Title Page
+%
+
+\title{
+    \vspace{2in}
+    \textmd{\textbf{\hmwkClass:\ \hmwkTitle}}\\
+    \normalsize\vspace{0.1in}\small{Due\ on\ \hmwkDueDate\ at 10:00 PM}\\
+    \vspace{0.1in}\large{\textit{\hmwkClassInstructor\ }}
+    \vspace{3in}
+}
+
+\author{\hmwkAuthorName}
+\date{}
+
+\renewcommand{\part}[1]{\textbf{\large Part \Alph{partCounter}}\stepcounter{partCounter}\\}
+
+%
+% Various Helper Commands
+%
+
+% For derivatives
+\newcommand{\deriv}[1]{\frac{\mathrm{d}}{\mathrm{d}x} (#1)}
+
+% For partial derivatives
+\newcommand{\pderiv}[2]{\frac{\partial}{\partial #1} (#2)}
+
+% Integral dx
+\newcommand{\dx}{\mathrm{d}x}
+
+% Alias for the Solution section header
+\newcommand{\solution}{\textbf{\large Solution}}
+
+% Probability commands: Expectation, Variance, Covariance, Bias
+\newcommand{\E}{\mathrm{E}}
+\newcommand{\Var}{\mathrm{Var}}
+\newcommand{\Cov}{\mathrm{Cov}}
+\newcommand{\Bias}{\mathrm{Bias}}
+
+\newcommand*\circled[1]{\tikz[baseline=(char.base)]{
+            \node[shape=circle,draw,inner sep=2pt] (char) {#1};}}
+
+\newcommand\myeqq{\stackrel{\mathclap{\normalfont\mbox{\scriptsize\text{set}}}}{=}}
+
+\makeatother
+
+\begin{document}
+
+\maketitle
+
+\pagebreak
+
+\begin{homeworkProblem}
+a) What is the radius of convergence of the Taylor series of the function $z \operatorname{coth} z$ at $z=0$?
+
+b) What is the radius of convergence of the Taylor series of the function $\left(z^{3}+1\right) /\left(z^{4}+1\right)$ at $z=1$?\\
+
+\solution\\
+
+\part\\
+
+Let $f(z) = z \,\text{coth}\, z$. The radius of convergence of $f(z)$ centered at $z = 0$ is the distance from $z$ to the nearest singularity $z_0$. Write $f(z)$ as
+\begin{align*}
+ f(z) = \frac{z\, \text{cosh}\, z}{\text{sinh}\, z}
+ ,\end{align*}
+and note that $\text{sinh}\, z$ has zeroes $k \pi i$ for $k \in \mathbb{Z}$ and $z \cosh{z}$ has only one zero at $z = 0$. So we compute
+\begin{align*}
+ \lim_{z \to 0}(z-0)f(z) = \lim_{z \to 0} \frac{z^2 \cosh{z}}{\sinh{z}} = 0
+ ,\end{align*}
+so at $z =0$, $f$ is actually analytic and thus has a removable singularity there. Let us now check the other singularities, so compute
+\begin{align*}
+  \lim_{z \to i \pi}(z- i \pi)f(z) = \lim_{z \to i \pi} z(z- i\pi) \frac{\cosh{z}}{\sinh{z}} \stackrel{u \, \mapsto z - i\pi}{=} \lim_{u \to 0} u(u + i \pi) \frac{\cosh(u + i \pi)}{\sinh(u + i\pi)}
+ .\end{align*}
+Using the periodicity of $\sinh$ and $\cosh$ then gives us
+\begin{align*}
+  \lim_{z \to i \pi}(z- i \pi)f(z) = \lim_{u \to 0} \frac{u^2 \cosh{u}}{\sinh{u}} + i\pi \lim_{u \to 0} \frac{u \cosh{u}}{\sinh{u}} = i\pi
+ .\end{align*}
+Since this limit exists and is finite an nonzero, $f$ has simple poles for every non-zero integer multiple of $i\pi$. So, the closest poles are $\pm i \pi$, which are in fact equidistant from $z = 0$ of distance $\pi$, so the radius of convergence is $R = \pi$.\\
+
+\part\\
+
+Let $f(z) = \frac{z^3 + 1}{z^4 + 1}$. Like \textbf{Part A}, the radius of convergence of $f(z)$ centered at $z =1$ is the distance from $z$ to the nearest singularity. So write $f(z)$ as
+\begin{align*}
+ f(z) = \frac{z^3 + 1}{z^4 + 1}
+ .\end{align*}
+Factoring the denominator gives $z^4 + 1 = \left(z - \frac{1 + i}{\sqrt{2}}\right) \left(z - \frac{1 - i}{\sqrt{2}}\right) \left(z - \frac{-1 + i}{\sqrt{2}}\right) \left(z - \frac{-1 - i}{\sqrt{2}}\right)$, so it has zeroes
+\begin{align*}
+ z_1 = \frac{1}{\sqrt{2}} + i \frac{1}{\sqrt{2}}, z_2 = \frac{1}{\sqrt{2}} - i \frac{1}{\sqrt{2}}, z_3 = -\frac{1}{\sqrt{2}} + i \frac{1}{\sqrt{2}}, z_4 = - \frac{1}{\sqrt{2}} - i \frac{1}{\sqrt{2}}
+ .\end{align*}
+Factoring the numerator gives $z^3 + 1 = (z+1)(z^2 - z + 1)$, so it has zeroes at
+\begin{align*}
+ z_5 = -1, z_6 = \frac{1}{2} + i\frac{\sqrt{3}}{2}, z_7 = \frac{1}{2} - i\frac{\sqrt{3}}{2}
+ .\end{align*}
+Hence, the numerator is continuous and holomorphic at $z_1, z_2, z_3,$ and $z_4$, so $f$ has simple poles at those points, of which $z_1$ and $z_2$ are closest since
+\begin{align*}
+ \abs{1 - z_1} = \abs{1 - z_2} = \sqrt{2 - \sqrt{2}} < \sqrt{2 + \sqrt{2}} = \abs{1 - z_3} = \abs{z - z_4}
+ ,\end{align*}
+and hence the radius of convergence is $R = \sqrt{2 - \sqrt{2}}$.
+\end{homeworkProblem}
+
+\pagebreak
+
+\begin{homeworkProblem}
+  Locate the poles of the function $\frac{z}{\sin ^{2} z}$, and calculate its principal parts and residues.\\
+
+  \solution\\
+
+  Let $f(z) = \frac{z}{\sin^2{z}}$. The numerator $z$ has a zero at $z = 0$ and the denominator $\sin^2{z}$ has zeroes $z = k \pi$ for $k \in \mathbb{Z}$. Now, we compute
+  \begin{align*}
+   \lim_{z \to 0}(z-0)f(z) = \lim_{z \to 0} \frac{z^2}{\sin^2{z}} = \lim_{z \to 0} \left( \frac{z}{\sin^2{z}} \right)^2 = 1^2 = 1,
+   \end{align*}
+  so since this limit exists and is nonzero and finite, $f$ has a simple pole at $z = 0$ with residue $\text{Res}[f, 0] = 1$. At $z = k\pi$ for nonzero $k \in \mathbb{Z}$, we have
+  \begin{align*}
+   \lim_{z \to k \pi} \frac{d}{dz}\left[(z-k \pi)^2 \frac{z}{\sin^2{z}}\right] &\stackrel{u\, \mapsto z - k\pi}{=} \lim_{u \to 0} \frac{d}{du} \left[ u^2 \cdot \frac{u + k\pi}{\sin^2(u + k \pi)} \right]\\
+   &= \lim_{u \to 0} \frac{-u[2u(u + k \pi)\cos{u} - (3u + 2k \pi)\sin{u}]}{\sin^3{u}}\\
+   &= \lim_{u \to 0} \frac{-u^2(u + k\pi) + u^2(3u + 2k\pi)}{u^3}\\
+   &= 1
+   .\end{align*}
+Since this limit exists and is nonzero and finite, we have that $f$ has a pole of order 2 at $z = k \pi$ for nonzero integers $k$ with residue $\text{Res}[f, k \pi] = 1 = b_1$. To find the $b_2$ term in this Laurent series, simply note that we have
+  \begin{align*}
+    f(z) = \frac{z}{\sin^2{z}} = \frac{1}{z - k\pi} + \frac{b_2}{(z-k \pi)^2} + \cdots
+   ,\end{align*}
+  which multiplying through by $(z-k \pi)^2$ and taking the limit as $z \to k \pi$ gives
+  \begin{align*}
+   b_2 = \lim_{z \to k\pi}(z-k\pi)^2 \frac{z}{\sin^2{z}} = k \pi
+   .\end{align*}
+   In summary, expanding $f$ around $z = 0$ gives
+  \begin{align*}
+   f(z) = \frac{z}{\sin^2{z}} = \underbrace{\frac{1}{z}}_{\text{principal}} + \cdots
+   .\end{align*}
+  Expanding around $z = k\pi$ for any nonzero $k$ gives
+  \begin{align*}
+   f(z) = \frac{z}{\sin^2{z}} = \underbrace{\frac{k\pi}{(z-k\pi)^2} + \frac{1}{z - k\pi}}_{\text{principal}} + \cdots
+   .\end{align*}
+\end{homeworkProblem}
+
+\pagebreak
+
+\begin{homeworkProblem}
+  \textbf{Gamelin \textsection V.7 Exercise 9}: Show that if the analytic function $f(z)$ has a zero of order $N$ at $z_{0}$, then $f(z)=g(z)^{N}$ for some function $g(z)$ analytic near $z_{0}$ and satisfying $g^{\prime}\left(z_{0}\right) \neq 0$.\\
+
+  \solution
+
+   \begin{proof}
+     If $f$ has a zero at $z = z_0$ of order $N$, we can write $f$ as
+     \begin{align*}
+      f(z) = (z-z_0)^N\tilde{f}(z)
+      ,\end{align*}
+    where $\tilde{f}(z_0) \neq 0$ and has a convergent power series. I claim that we can take
+    \begin{align*}
+     g(z) = (z-z_0)e^{ \frac{\ln{\tilde{f}(z)}}{N} }
+     \end{align*}
+    such that $f(z) = g(z)^N$. Indeed, note that by construction of our $g$ and for a suitable choice of branch for the logarithm, we have
+    \begin{align*}
+     f(z) = g(z)^N = (z-z_0)^Ne^{\ln{\tilde{f}(z)}} = (z-z_0)^N\tilde{f}(z)
+     .\end{align*}
+    Further,
+    \begin{align*}
+     g'(z) = e^{ \frac{\ln{\tilde{f}(z)}}{N} } + (z-z_0) \left(\frac{\tilde{f}'(z)}{\tilde{f}(z)}\right)e^{ \frac{\ln{\tilde{f}(z)}}{N} } = e^{ \frac{\ln{\tilde{f}(z)}}{N} }\left(1 + (z-z_0)\frac{\tilde{f}'(z)}{\tilde{f}(z)}\right)
+     ,\end{align*}
+    so we have $g'(z_0) = e^{ \frac{\ln{\tilde{f}(z)}}{N} }$ since $\tilde{f}(z_0) \neq 0$. The exponential is always greater than zero, so indeed we have $g'(z_0) \neq 0$, and our constructed $g$ works.
+   \end{proof}
+\end{homeworkProblem}
+\end{document}

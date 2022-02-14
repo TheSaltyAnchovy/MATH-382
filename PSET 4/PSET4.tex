@@ -23,6 +23,9 @@
 \usepackage{wrapfig}
 \usepackage{pgfplots}
 \usepackage{esint}
+\usepackage{algorithm}
+\usepackage{algorithmic}
+
 \pgfplotsset{compat=1.8}
 
 \definecolor{mediumgreen}{RGB}{0,153,0}
@@ -208,9 +211,31 @@ and thus the solution $f(z)$ is odd.
 Plugging in the Taylor series, we get the following after differentiating term by term and expanding the Cauchy product
 \begin{align*}
  \left( \sum_{k=0}^{\infty} a_{2k+1} \frac{z^{2k + 1}}{(2k+1)!}\right)' = 1 + \left(\sum_{k=0}^{\infty} a_{2k+1} \frac{z^{2k + 1}}{(2k+1)!}\right)^2\\
- \iff \sum_{k=0}^{\infty} a_{2k+1} \frac{z^{2k}}{(2k)!} - \sum_{k=0}^{\infty} \left( \sum_{j=0}^{k} \frac{a_{2j + 1}}{(2j + 1)!} \cdot \frac{a_{2(k-j) + 1}}{(2(k-j) + 1)!} \right)z^{2k+1} - 1 = 0
+ \iff \sum_{k=0}^{\infty} a_{2k+1} \frac{z^{2k}}{(2k)!} - \sum_{k=0}^{\infty} \left( \sum_{j=0}^{k-1} \frac{a_{2j + 1}}{(2j + 1)!} \cdot \frac{a_{2(k-j) - 1}}{(2(k-j) - 1)!} \right)z^{2k} = 1
  .\end{align*}
-\textcolor{red}{FINISH}
+Comparing coefficients, we must have that
+\begin{align*}
+ a_1 = 1 \text{ and for } k >1, \; a_{2k+1} = (2k)! \left( \sum_{j=0}^{k-1} \frac{a_{2j + 1}}{(2j + 1)!} \cdot \frac{a_{2(k-j) - 1}}{(2(k-j) - 1)!} \right)
+ .\end{align*}
+
+\part\\
+
+Using the result of \textbf{Part B}, we have
+\begin{align*}
+ \text{tan}(x) \approx x + \frac{x^3}{3} + \frac{2x^5}{15} + O(x^7)
+ .\end{align*}
+The error is then approximately
+\begin{align*}
+ \text{tan} \left( \frac{1}{100} \right) - \left( \frac{1}{100} + \frac{ \left(\frac{1}{100}\right)^3 }{3} + \frac{2 \left(\frac{1}{100}\right)^5}{15}\right) \approx 1 \times10^{-15}
+ .\end{align*}
+
+\part\\
+
+Multiplying the first three nonzero terms of the Taylor series we found in \textbf{Part D} and recalling that the Taylor series for $\cos{z}$ is $1-\frac{x^{2}}{2 !}+\frac{x^{4}}{4 !}-\cdots$ gives
+\begin{align*}
+ \left(x + \frac{x^3}{3} + \frac{2x^5}{15} \right) \left( 1 - \frac{x^2}{2} + \frac{x^4}{24} \right) = x - \frac{x^3}{6} + \frac{x^5}{120} + \cdots
+ .\end{align*}
+ Indeed, recall that the Taylor series of $\sin{z}$ is $x-\frac{x^{3}}{3 !}+\frac{x^{5}}{5 !}-\cdots$, so the result follows.
 \end{homeworkProblem}
 
 \pagebreak
@@ -233,12 +258,12 @@ Plugging in the Taylor series, we get the following after differentiating term b
      ,\end{align*}
     where we use the relation $k^{(n)}=\frac{(k+n-1) !}{(k-1) !}$ and thus $ \frac{k^{(n)}}{n!} = \left(\begin{matrix}k + n-1 \\ n\end{matrix}\right) $. For the radius of convergence, let us apply the ratio test to $a_k = \left(\begin{matrix}k + n-1 \\ n\end{matrix}\right)$:
     \begin{align*}
-     R = \lim_{n \to \infty} \abs{ \frac{\left(\begin{matrix}k + n-1 \\ n\end{matrix}\right)}{\left(\begin{matrix}k + n \\ n +1 \end{matrix}\right)} } &= \lim_{n \to \infty} \frac{(k + n -1)!}{n! (k-1)!} \cdot \frac{(n+1)!(k+1)!}{(k+n)!}\\
-     &= \lim_{n \to \infty} \frac{(k + n -1)!}{n! (k-1)!} \cdot \frac{(n+1)(n!)(k+1)(k)(k-1)!}{(k+n)(k+n-1)!}\\
-     &= \lim_{n \to \infty} \frac{k(k+1)(n+1)}{k+n}\\
-     &= k(k+1)
+     R = \lim_{n \to \infty} \abs{ \frac{\left(\begin{matrix}k + n-1 \\ n\end{matrix}\right)}{\left(\begin{matrix}k + n \\ n +1 \end{matrix}\right)} } &= \lim_{n \to \infty} \frac{(k + n -1)!}{n! (k-1)!} \cdot \frac{(n+1)!(k-1)!}{(k+n)!}\\
+     &= \lim_{n \to \infty} \frac{(k + n -1)!}{n!} \cdot \frac{(n+1)(n!)}{(k+n)(k+n-1)!}\\
+     &= \lim_{n \to \infty} \frac{n+1}{k+n}\\
+     &= 1
      .\end{align*}
-    Hence, the radius of convergence is $R = k(k+1)$.
+    Hence, the radius of convergence is $R = 1$.
    \end{proof}
 \end{homeworkProblem}
 
