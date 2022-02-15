@@ -1,0 +1,317 @@
+
+\documentclass{article}
+\usepackage[usenames, dvipsnames]{color}
+\usepackage{fancyhdr}
+\usepackage{extramarks}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{mathtools}
+\usepackage{amsthm}
+\usepackage{amsfonts}
+\usepackage[per-mode=fraction]{siunitx}
+\usepackage{tikz}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{afterpage}
+\usepackage{systeme}
+\usepackage{makecell}
+\usepackage{nicematrix}
+\usepackage{physics}
+\usepackage{float}
+\usepackage{tikz}
+\usetikzlibrary{math,arrows,positioning,shapes,fit,calc}
+\usepackage{dsfont}
+\usepackage{wrapfig}
+\usepackage{pgfplots}
+\usepackage{esint}
+\usepackage{algorithm}
+\usepackage{algorithmic}
+
+\pgfplotsset{compat=1.8}
+
+\definecolor{mediumgreen}{RGB}{0,153,0}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\usetikzlibrary{trees}
+
+%
+% Basic Document Settings
+%
+
+\topmargin=-0.45in
+\evensidemargin=0in
+\oddsidemargin=0in
+\textwidth=6.5in
+\textheight=9.0in
+\headsep=0.25in
+
+\linespread{1.1}
+
+\pagestyle{fancy}
+\lhead{}
+\chead{\hmwkClass\ (\hmwkClassInstructor\/): \hmwkTitle}
+\rhead{\firstxmark}
+\lfoot{\lastxmark}
+\cfoot{\thepage}
+
+\renewcommand\headrulewidth{0.4pt}
+\renewcommand\footrulewidth{0.4pt}
+
+\setlength\parindent{0pt}
+
+%
+% Create Problem Sections
+%
+
+\newcommand{\enterProblemHeader}[1]{
+    \nobreak\extramarks{}{Problem \arabic{#1} continued on next page\ldots}\nobreak{}
+    \nobreak\extramarks{Problem \arabic{#1} (continued)}{Problem \arabic{#1} continued on next page\ldots}\nobreak{}
+}
+
+\newcommand{\exitProblemHeader}[1]{
+    \nobreak\extramarks{Problem \arabic{#1} (continued)}{Problem \arabic{#1} continued on next page\ldots}\nobreak{}
+    \stepcounter{#1}
+    \nobreak\extramarks{Problem \arabic{#1}}{}\nobreak{}
+}
+
+\setcounter{secnumdepth}{0}
+\newcounter{partCounter}
+\newcounter{homeworkProblemCounter}
+\setcounter{homeworkProblemCounter}{1}
+\nobreak\extramarks{Problem \arabic{homeworkProblemCounter}}{}\nobreak{}
+
+%
+% Homework Problem Environment
+%
+% This environment takes an optional argument. When given, it will adjust the
+% problem counter. This is useful for when the problems given for your
+% assignment aren't sequential. See the last 3 problems of this template for an
+% example.
+%
+\newenvironment{homeworkProblem}[1][-1]{
+    \ifnum#1>0
+        \setcounter{homeworkProblemCounter}{#1}
+    \fi
+    \section{Problem \arabic{homeworkProblemCounter}}
+    \setcounter{partCounter}{1}
+    \enterProblemHeader{homeworkProblemCounter}
+}{
+    \exitProblemHeader{homeworkProblemCounter}
+}
+
+%
+% Homework Details
+%   - Title
+%   - Due date
+%   - Class
+%   - Section/Time
+%   - Instructor
+%   - Author
+%
+
+\newcommand{\hmwkTitle}{Homework 5}
+\newcommand{\hmwkDueDate}{Monday February 14, 2022}
+\newcommand{\hmwkClass}{Math 382}
+\newcommand{\hmwkClassTime}{Section A}
+\newcommand{\hmwkClassInstructor}{Prof. Ezra Getzler}
+\newcommand{\hmwkAuthorName}{\textbf{Anthony Tam}}
+
+%
+% Title Page
+%
+
+\title{
+    \vspace{2in}
+    \textmd{\textbf{\hmwkClass:\ \hmwkTitle}}\\
+    \normalsize\vspace{0.1in}\small{Due\ on\ \hmwkDueDate\ at 10:00 PM}\\
+    \vspace{0.1in}\large{\textit{\hmwkClassInstructor\ }}
+    \vspace{3in}
+}
+
+\author{\hmwkAuthorName}
+\date{}
+
+\renewcommand{\part}[1]{\textbf{\large Part \Alph{partCounter}}\stepcounter{partCounter}\\}
+
+%
+% Various Helper Commands
+%
+
+% For derivatives
+\newcommand{\deriv}[1]{\frac{\mathrm{d}}{\mathrm{d}x} (#1)}
+
+% For partial derivatives
+\newcommand{\pderiv}[2]{\frac{\partial}{\partial #1} (#2)}
+
+% Integral dx
+\newcommand{\dx}{\mathrm{d}x}
+
+% Alias for the Solution section header
+\newcommand{\solution}{\textbf{\large Solution}}
+
+% Probability commands: Expectation, Variance, Covariance, Bias
+\newcommand{\E}{\mathrm{E}}
+\newcommand{\Var}{\mathrm{Var}}
+\newcommand{\Cov}{\mathrm{Cov}}
+\newcommand{\Bias}{\mathrm{Bias}}
+
+\newcommand*\circled[1]{\tikz[baseline=(char.base)]{
+            \node[shape=circle,draw,inner sep=2pt] (char) {#1};}}
+
+\newcommand\myeqq{\stackrel{\mathclap{\normalfont\mbox{\scriptsize\text{set}}}}{=}}
+
+\makeatother
+
+\begin{document}
+
+\maketitle
+
+\pagebreak
+
+\begin{homeworkProblem}
+  Find the number of zeroes of the function $f(z)=z^{7}+6 z^{3}+7$ in the first quadrant $0<\operatorname{Arg} z<\pi / 2$. (Hint: use the Argument Principle, with the curve that follows the circle of radius $R$ in the first quadrant from $R$ to $i R$, followed by the the segment of the imaginary axis from $i R$ to 0 , and the segment of the real axis from 0 back to $R$.)\\
+
+  \solution\\
+
+  Let $\gamma$ be the closed, simple path given in the hint. Note that $f(z)$ is entire, so the Argument Principle gives
+  \begin{align*}
+   Z = \frac{1}{2\pi i}\oint_C \frac{f'(z)}{f(z)} dz = \frac{1}{2\pi}\Delta_C\, \text{arg}\, f(z)
+   ,\end{align*}
+  where $Z$ is the number of zeros $f(z)$ has in the first quadrant. $C$ is defined as a concatenation of paths $C_1, C_2, $ and $C_3$ as described in the hint. Along the circle of radius $R$, call this path $C_1$, $z = Re^{it}$ for $0 \leq t \leq \frac{\pi}{2}$, so
+  \begin{align*}
+   f(Re^{it}) = R^7e^{7it} \left( 1 + \frac{6}{R^4e^{4it}} + \frac{7}{R^7e^{7it}} \right)
+   .\end{align*}
+  But for large $R$, $\text{arg}\, f(Re^{it}) \approx \text{arg}(e^{7it}) = 7t$ so
+  \begin{align*}
+   \Delta_{C_1}\, \text{arg} \, f(z) = 7 \cdot \left( \frac{\pi}{2} - 0\right) = \frac{7\pi}{2}
+   .\end{align*}
+  For $C_2$ along the imaginary axis from $iR$ to 0, we have $z = it$ for $R \geq t \geq 0$, so
+  \begin{align*}
+    f(it) = (it)^7 + 6(it)^3 + 7 = -it^7 -6it^3 + 7 = 7 -i(t^7+6t^3)
+   .\end{align*}
+  But note for $R \geq t \geq 0$,
+  \begin{align*}
+   \text{Re}\, f(it) = 7 > 0 \;\text{ and }\; \text{Im}\, f(it) = -t^7 - 6t^3 < 0
+   .\end{align*}
+  Hence, as $t$ decreases from $R$ to 0, $f(it)$ starts in the fourth quadrant and moves to the point $z = 7$. Thus,
+  \begin{align*}
+   \Delta_{C_2}\, \text{arg}\, f(z) = \frac{\pi}{2}
+   .\end{align*}
+  Along $C_3$, $z = t$ for $0\leq t \leq R$, we have
+  \begin{align*}
+   f(t) = t^7 + 6t^3 + 7
+   ,\end{align*}
+  and the argument doesn't change, so
+  \begin{align*}
+    \Delta_{C_3}\, \text{arg}\, f(z) = 0
+   .\end{align*}
+  Thus,
+  \begin{align*}
+   \Delta_{C}\, \text{arg}\, f(z) = \frac{7\pi}{2} + \frac{\pi}{2} + 0 = 4\pi
+   ,\end{align*}
+  and we have $Z = \frac{4\pi}{2\pi} = 2$, so $f$ has 2 zeros in the first quadrant.
+\end{homeworkProblem}
+
+\pagebreak
+
+\begin{homeworkProblem}
+  Show that the equation $z^{4}-5 z^{2}+3=e^{-z}$ has no solutions on the imaginary axis, and precisely two solutions in the half-plane $\operatorname{Re} z>0$.\\
+
+  \solution\\
+
+  \vspace{-0.5cm}
+
+   \begin{proof}
+     Along the $\mathbf{Im}-$axis, we have that $z = it$ for $t \in \mathbb{R}$, so our equation becomes
+     \begin{align*}
+      (it^4) - 5(it)^2 + 3 = t^4 +5it^2 + 3 = e^{-it}
+      .\end{align*}
+    But note $\abs{e^{-it}} = 1$ for all $t$, but our polynomial $t^4 +5it^2 + 3 > 3$ for all $t$, so theres no solution. Let $f(z) = z^4-5 z^{2}+3 -e^{-z}$ and $g(z) = z^4-5z^{2}+3$. Simply noting that
+    \begin{align*}
+     \abs{f(z)-g(z)} < \abs{g(z)}
+     ,\end{align*}
+    on the right half plane $\text{Re}\, z > 0$ and a zero of $-g$ is exactly a zero of $g$ as well, so Rouché's Theorem gives us that $f$ and $g$ have the same number of zeros on the half plane. But, the entire function $g$ has two roots in the half plane since by the Argument Principle similar to \textbf{Question 1} but applied to the semicircle of radius $R$ centered at the origin in the right half-plane:
+    \begin{align*}
+      \Delta_C \, \text{arg}\, g(z) = 4\cdot \left( \frac{\pi}{2} - \left( -\frac{\pi}{2}\right)\right) + 0
+     ,\end{align*}
+    so $Z = \frac{4\pi}{2\pi} =2$ zeros. But, $g$ and $f$ have the same number of zeros, so $z^{4}-5 z^{2}+3=e^{-z}$ has two solutions on the half-plane $\text{Re}\, z > 0$.
+   \end{proof}
+\end{homeworkProblem}
+
+\pagebreak
+
+\begin{homeworkProblem}
+  Let $\gamma_{N}$ be the closed curve that traces the boundary of the square with vertices $\pm(N+1 / 2) \pm i(N+1 / 2)$, where $N=1,2,3, \ldots .$
+
+a) Show that
+$$
+\lim _{N \rightarrow \infty} \int_{\gamma_{N}} \frac{\pi \cot (\pi z) d z}{z^{2}}=0.
+$$
+b) Show that $\pi \cot (\pi z)$ has simple poles at the integers, with residue 1. Apply the Residue Theorem to the integral
+$$
+\int_{\gamma_{N}} \frac{\pi \cot (\pi z) d z}{z^{2}},
+$$
+and conclude that
+$$
+\sum_{n=1}^{\infty} \frac{1}{n^{2}}=\frac{\pi^{2}}{6}.
+$$
+(This formula was proved, by a different method, by Euler.)\\
+
+\solution\\
+
+\part
+
+\vspace{-0.5cm}
+
+ \begin{proof}
+ Let $f(z) = \frac{1}{z^2}$ and $g(z) = \pi \cot{\pi z}$. We want to use the $ML$ inequality here to show that the integral is bounded above and below by 0 as $N \to \infty$ to conclude that this is integral vanishes by the sandwich theorem. So, to this end, we note that $f$ is clearly bounded above on $\gamma_N$ by $ \frac{1}{N^2}$. For $g$, note that $g(z) = \pi \frac{\cos{\pi z}}{\sin{\pi z}}$ is analytic for $z \notin \mathbb{Z}$ but periodic for $z \in \mathbb{Z}$ since $g(z + n) = z$ for $n \in \mathbb{Z}$. So, along the paths parallel to $\mathbf{Im}$-axis, we have
+ \begin{align*}
+\left|g\left(i y \pm\left(N+\frac{1}{2}\right)\right)\right|=\left|g\left(\frac{1}{2}+i y\right)\right|=\pi\left|\frac{\sinh (\pi y)}{\cosh (\pi y)}\right| = \pi \abs{\tanh{\pi y}} \leq \pi
+  .\end{align*}
+However, along the sides parallel to the $\mathbf{Re}$-axis, $g$ is bounded above by
+\begin{align*}
+ \abs{g \left(x \pm i \left( N + \frac{1}{2}\right)\right)} &= \abs{ \pi \frac{\cos (\pi x) \sin (\pi x)-i \cdot \cosh (\pi (N + 1/2)) \sinh (\pi (N + 1/2))}{\cosh ^{2}(\pi (N + 1/2)) \sin ^{2}(\pi x)+\cos ^{2}(\pi x) \sinh ^{2}(\pi (N+1/2))} }\\
+ &\leq \pi \frac{1+\cosh \left(\pi\left(N+\frac{1}{2}\right)\right) \sinh \left(\pi\left(N+\frac{1}{2}\right)\right)}{\sinh ^{2}\left(\pi\left(N+\frac{1}{2}\right)\right)} \\
+ &\leq \pi \frac{\cosh{ \left( \pi\left(N + \frac{1}{2}\right)\right)}}{\sinh(\pi \left(N + \frac{1}{2}\right))}\\
+ &\leq \pi \coth \left( \frac{3\pi}{2}\right)\\
+ &\approx 1.28\pi
+ .\end{align*}
+What is important to note here is that $g$ is \textit{uniformly} bounded on $\gamma_n$, i.e., its bound does not depend on $N$. Let the upper bounds on $f$ and $g$ on $\gamma_N$ be $M_1$ and $M_2$ respectively. So, the $ML$-inequality gives
+\begin{align*}
+ \abs{\int_{\gamma_N} (fg)(z) dz} \leq \frac{M_1}{M_2}L = \frac{M_2}{N^2}\cdot 8 \left(N + \frac{1}{2}\right) = \frac{8M_2}{N} + \frac{4M_2}{N^2} \to 0 \text{ as } N \to \infty
+ ,\end{align*}
+ since $M_2$ has no $N$ dependence. Thus, the result follows.
+ \end{proof}
+
+ \pagebreak
+
+ \part
+
+ \vspace{-0.5cm}
+
+  \begin{proof}
+  Since $g(z) = \pi \frac{\cos{\pi z}}{\sin{\pi z}}$, $g$ will have simple poles where $\sin{\pi z}$ has zeros, which is exactly at $z = n$ for $n \in \mathbb{Z}$. To calculate the residue,
+  \begin{align*}
+    \text{Res}\left[g, n\right] = \lim _{z \rightarrow k}(z-k) \pi \frac{\cos \pi z}{\sin \pi z}=\lim _{z \rightarrow k}(\cos \pi z) \frac{\pi}{\frac{\sin \pi z}{z-k}}=\pi \frac{\cos \pi k}{(\sin \pi z)^{\prime}(k)}=1
+   ,\end{align*}
+  where we used the result $\operatorname{Res}\left[\frac{f(z)}{g(z)}, z_{0}\right]=\frac{f\left(z_{0}\right)}{g^{\prime}\left(z_{0}\right)}$ from \textbf{Discussion 4}. For the function $fg$, we have simple poles still for $z = n$ and $n$ a \textit{nonzero} integer, but at $z = 0$, we have a triple pole. Thus,
+  \begin{align*}
+   \text{Res}[fg, n \neq 0] = \lim_{z \to n}(z-n)(fg)(z) \stackrel{u \mapsto z-n}{=} \lim_{u \to 0}u(fg)(u + n) = \lim_{u \to 0} \frac{u \cdot g(u + n)}{(u+n)^2} = \lim_{u \to 0} \frac{u \cdot g(u)}{(u+n)^2} = \frac{1}{n^2}
+   ,\end{align*}
+  where we used periodicity of $g$. At $z = 0$, we use the formula for a pole of order 3 to compute
+  \begin{align*}
+    \text{Res}[fg, 0] = \lim_{z \to 0} \frac{1}{2!} \frac{d^2}{dz^2} \left(z^3 \pi \frac{\cot{\pi z}}{z^2}\right) = \lim_{z \to 0} \frac{\pi}{2}(2 \pi (\pi z\cot{\pi z} - 1 )\csc^2{\pi z}) = \lim_{z \to 0} \frac{\pi^3 z \cot{\pi z} - \pi^2}{\sin^2{\pi z}} \stackrel{\text{L'Hôp}}{=} \frac{-\pi^2}{3}
+   .\end{align*}
+   Thus, the Residue Theorem gives us
+   \begin{align*}
+    \int_{\gamma_N}(fg)(z) \, dz = 2\pi i\sum_{k} \text{Res}[fg, z_k] = -\frac{\pi^2}{3} + 2\sum_{n = 1}^{N} \frac{1}{n^2}
+    ,\end{align*}
+  where we take a sum over positive integers up to $N$ and double it to represent the sum over all nonzero integers from $-N$ to $N$. Finally taking limits of both sides as $N \to \infty$ and using \textbf{Part A} to conclude the LHS vanishes gives
+  \begin{align*}
+   \sum_{n=1}^{\infty} \frac{1}{n^2} = \frac{\pi^2}{6}
+   ,\end{align*}
+  as desired.
+  \end{proof}
+\end{homeworkProblem}
+
+\end{document}
